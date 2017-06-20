@@ -13,7 +13,7 @@
 #ifndef FILLER_H
 # define FILLER_H
 
-# include "libft/libft.h"
+# include "libft/includes/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -42,7 +42,6 @@ typedef struct	s_state
 	int		adjust_x;
 	int 	adjust_y;
 	int 	star_found;
-	int 	picked_side;
 
 }				t_state;
 
@@ -53,5 +52,22 @@ void    ft_printoutput(t_state *s);
 int		ft_isvalid(t_state *s);
 void	ft_shave(t_state *s);
 void	ft_printvars(t_state *s);
+void	ft_init(t_state *s);
+void	ft_printoutput(t_state *s);
+void	ft_check_walls(t_state *s);
+int 	ft_check_top_wall(t_state *s);
+int 	ft_check_bot_wall(t_state *s);
+int 	ft_check_left_wall(t_state *s);
+int 	ft_check_right_wall(t_state *s);
+int		ft_ffxr(t_state *s);
+int		ft_ffxl(t_state *s);
+void	ft_tl_br_wall(t_state *s);
+void	ft_tr_bl_wall(t_state *s);
+void	ft_fill_tl(t_state *s);
+void	ft_fill_tr(t_state *s);
+void	ft_fill_bl(t_state *s);
+void	ft_fill_br(t_state *s);
+void	ft_start_sector(t_state *s);
+void	ft_en_start_sector(t_state *s);
 
 #endif

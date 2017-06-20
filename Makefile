@@ -20,11 +20,25 @@ SRC =	main.c		\
 		read.c		\
 		moves.c		\
 		shave.c		\
+		utilities.c \
+		sectors.c   \
+		t_left_b_right.c \
+		t_right_b_left.c  \
+		check_wall.c    \
+	    build_walls.c   \
+	    fill_corner.c  \
 
 OBJ =	main.o		\
 		read.o		\
 		moves.o		\
 		shave.o		\
+		utilities.o \
+		sectors.o   \
+		t_left_b_right.o \
+        t_right_b_left.o  \
+        check_wall.o     \
+        build_walls.o   \
+        ffill_corner.o  \
 
 $(NAME):
 	@make re -C libft/
