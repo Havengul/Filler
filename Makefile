@@ -38,7 +38,7 @@ OBJ =	main.o		\
         t_right_b_left.o  \
         check_wall.o     \
         build_walls.o   \
-        ffill_corner.o  \
+        fill_corner.o  \
 
 $(NAME):
 	@make re -C libft/
