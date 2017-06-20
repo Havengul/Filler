@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jerasmus <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchimes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/12 11:05:02 by jerasmus          #+#    #+#             */
-/*   Updated: 2017/06/19 08:48:24 by lchimes          ###   ########.fr       */
+/*   Created: 2017/06/20 22:48:40 by lchimes           #+#    #+#             */
+/*   Updated: 2017/06/20 22:48:42 by lchimes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	ft_play(t_state *s)
 {
 	s->fnl_py--;
-	ft_check_walls(s); // checks to see if a wall has been completed;
-	if (s->wall_complete == 0) // if we dont have a finished wall
+	ft_check_walls(s);
+	if (s->wall_complete == 0)
 	{
-		if (s->start_sector == 1 || s->start_sector == 4) // if top left or bottom right start
-			ft_tl_br_wall(s); // make a wall from top left to bottom right
-		else if (s->start_sector == 2 || s->start_sector == 3) // if top right or bottom left start
-			ft_tr_bl_wall(s); // make a wall from top right to bottom left
+		if (s->start_sector == 1 || s->start_sector == 4)
+			ft_tl_br_wall(s);
+		else if (s->start_sector == 2 || s->start_sector == 3)
+			ft_tr_bl_wall(s);
 	}
 	else if (s->en_start_sector == 1)
 		ft_fill_tl(s);
@@ -41,14 +41,10 @@ int		main(void)
 
 	ft_init(&s);
 	ft_xoro(&s);
-	ft_input(&s); // first time reading map
-	ft_start_sector(&s); // finds which section we start in and puts it in s->start_sector
-	// 1 = topleft			 _____
-	// 2 = top right		|1_|_2|
-	// 3 = bottom left		|3_|_4|
-	// 4 = bottom right
+	ft_input(&s);
+	ft_start_sector(&s);
 	ft_en_start_sector(&s);
-	ft_play(&s); // chooses a direction to play and does it;
+	ft_play(&s);
 	while (s.finished == 0)
 	{
 		ft_input(&s);

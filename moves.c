@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lchimes <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/20 22:50:14 by lchimes           #+#    #+#             */
+/*   Updated: 2017/06/20 22:53:46 by lchimes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
 int		ft_isvalid(t_state *s)
 {
 	int		overlap;
 
-	// TODO check if piece is not actually out of bounds (dots are off board but stars arnt)
 	overlap = 0;
 	s->curm_y = 0;
 	while (s->curm_y <= s->fnl_py)
@@ -12,24 +23,21 @@ int		ft_isvalid(t_state *s)
 		s->curm_x = 0;
 		while (s->curm_x <= s->fnl_px)
 		{
-			// checks if piece is out of bounds
 			if (s->curb_y + s->fnl_py >= s->fnl_by
 				|| s->curb_x + s->fnl_px > s->fnl_bx)
 				return (99);
-			// checks if previous piece on board overlaps with one of our pieces
-			if (ft_tolower(s->board[s->curb_y + s->curm_y][s->curb_x + s->curm_x])
-				== s->xoro && s->piece[s->curm_y][s->curm_x] == '*')
+			if (ft_tolower(s->board[s->curb_y + s->curm_y]
+						[s->curb_x + s->curm_x])
+						== s->xoro && s->piece[s->curm_y][s->curm_x] == '*')
 				overlap++;
-			// checks if our piece overlaps with opponent piece
 			if (ft_tolower(s->board[s->curb_y + s->curm_y][s->curb_x
-														   + s->curm_x])
-				== s->enxoro && s->piece[s->curm_y][s->curm_x] == '*')
+						+ s->curm_x])
+						== s->enxoro && s->piece[s->curm_y][s->curm_x] == '*')
 				return (100);
 			s->curm_x++;
 		}
 		s->curm_y++;
 	}
-	// returns number of blocks that overlap with our piece (1 is a valid move)
 	return (overlap);
 }
 
